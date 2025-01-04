@@ -1,11 +1,11 @@
 # Project Identification
-sonar.projectKey=Attendance-System
-sonar.projectName=AttendanceSystem
+sonar.projectKey=
+sonar.projectName=
 sonar.projectVersion=1.0
 
 # Authentication
 sonar.host.url=http://localhost:9000
-sonar.login=sqp_45416795293b81cf467c73ee2f0e177636056533
+sonar.login=
 
 # Source Code Configuration
 sonar.sources=app,resources/views

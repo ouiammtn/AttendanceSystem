@@ -30,7 +30,7 @@ class LoginController extends Controller
      *
      * @return string
      */
-    protected function redirectTo(): string
+    public function redirectTo(): string
     {
         if (Auth::user()->role == 'Admin') {
             return '/manage/dashboard';
