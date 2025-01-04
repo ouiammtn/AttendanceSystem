@@ -79,13 +79,10 @@ class StudentController extends BaseController
     {
         try {
             $student->delete();
+            alert('Good Job', 'Student removed Successfully', 'success');
+        } catch (\Exception $exception) {
+            alert('Oops', 'Cannot delete student with existing records', 'error');
         }
-        catch (\Exception $exception){
-            alert('Oops', 'Please try again', 'error');
-        }
-        // Show Sweet Alert Notification
-        alert('Good Job', 'Student removed Successfully', 'success');
-        // Redirect Back
         return redirect()->back();
     }
 }
