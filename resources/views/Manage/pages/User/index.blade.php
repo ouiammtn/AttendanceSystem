@@ -18,8 +18,10 @@
                             </nav>
                         </div>
                         <div class="col-lg-6 col-5 text-right">
-                            <a href="{{ route('dashboard') }}" class="btn btn-sm btn-neutral"><i class="fa fa-home" aria-hidden="true"></i> </a>
-                        </div>
+                            <a href="{{ route('dashboard') }}" class="btn btn-sm btn-neutral" aria-label="Go to Dashboard">
+                                <i class="fa fa-home" aria-hidden="true"></i>
+                                <span class="sr-only">Dashboard</span>
+                            </a></div>
                     </div>
                 </div>
             </div>

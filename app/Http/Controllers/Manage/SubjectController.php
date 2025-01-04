@@ -16,6 +16,10 @@ use Illuminate\Http\Request;
 
 class SubjectController extends BaseController
 {
+    // Define the constants
+    const SUCCESS_MESSAGE = 'Good Job';
+    const ERROR_MESSAGE = 'Please try again';
+
     /**
      * Access the index page for the students to see all students
      * @return Application|Factory|View
@@ -55,7 +59,7 @@ class SubjectController extends BaseController
     public function attachAssignedStudents(Subject $subject, Request $request): RedirectResponse
     {
         $subject->students()->attach($request->get('students'));
-        alert('Good Job', 'Students Assigned Successfully', 'success');
+        alert(self::SUCCESS_MESSAGE, 'Students Assigned Successfully', 'success');
         // Redirect Back
         return redirect()->route('subject.index');
     }
@@ -69,7 +73,7 @@ class SubjectController extends BaseController
     public function detachAssignedStudent(Subject $subject, Student $student): RedirectResponse
     {
         $subject->students()->detach($student);
-        alert('Good Job', $student->name . ' Removed Successfully', 'success');
+        alert(self::SUCCESS_MESSAGE, $student->name . ' Removed Successfully', 'success');
         // Redirect Back
         return redirect()->back();
     }
@@ -84,10 +88,10 @@ class SubjectController extends BaseController
             Subject::create($request->validated());
         }
         catch (\Exception $exception){
-            alert('Oops', 'Please try again', 'error');
+            alert('Oops', self::ERROR_MESSAGE, 'error');
         }
         // Show Sweet Alert Notification
-        alert('Good Job', 'Course Created Successfully', 'success');
+        alert(self::SUCCESS_MESSAGE, 'Course Created Successfully', 'success');
         // Redirect Back
         return redirect()->back();
     }
@@ -103,10 +107,10 @@ class SubjectController extends BaseController
             $subject->update($request->validated());
         }
         catch (\Exception $exception){
-            alert('Oops', 'Please try again', 'error');
+            alert('Oops', self::ERROR_MESSAGE, 'error');
         }
         // Show Sweet Alert Notification
-        alert('Good Job', 'Course Updated Successfully', 'success');
+        alert(self::SUCCESS_MESSAGE, 'Course Updated Successfully', 'success');
         // Redirect Back
         return redirect()->back();
     }
@@ -121,10 +125,10 @@ class SubjectController extends BaseController
             $subject->delete();
         }
         catch (\Exception $exception){
-            alert('Oops', 'Please try again', 'error');
+            alert('Oops', self::ERROR_MESSAGE, 'error');
         }
         // Show Sweet Alert Notification
-        alert('Good Job', 'Course removed Successfully', 'success');
+        alert(self::SUCCESS_MESSAGE, 'Course removed Successfully', 'success');
         // Redirect Back
         return redirect()->back();
     }

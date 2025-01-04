@@ -14,6 +14,9 @@ use Illuminate\Http\Request;
 
 class StudentController extends BaseController
 {
+    // Define the constant
+    const SUCCESS_MESSAGE = 'Good Job';
+
     /**
      * Access the index page for the students to see all students
      * @return Application|Factory|View
@@ -47,7 +50,7 @@ class StudentController extends BaseController
             alert('Oops', 'Please try again', 'error');
         }
         // Show Sweet Alert Notification
-        alert('Good Job', 'Student Created Successfully', 'success');
+        alert(self::SUCCESS_MESSAGE, 'Student Created Successfully', 'success');
         // Redirect Back
         return redirect()->back();
     }
@@ -66,7 +69,7 @@ class StudentController extends BaseController
             alert('Oops', 'Please try again', 'error');
         }
         // Show Sweet Alert Notification
-        alert('Good Job', 'Student Updated Successfully', 'success');
+        alert(self::SUCCESS_MESSAGE, 'Student Updated Successfully', 'success');
         // Redirect Back
         return redirect()->back();
     }
@@ -79,7 +82,7 @@ class StudentController extends BaseController
     {
         try {
             $student->delete();
-            alert('Good Job', 'Student removed Successfully', 'success');
+            alert(self::SUCCESS_MESSAGE, 'Student removed Successfully', 'success');
         } catch (\Exception $exception) {
             alert('Oops', 'Cannot delete student with existing records', 'error');
         }

@@ -20,8 +20,10 @@
                         </div>
                         <div class="col-lg-6 col-5 text-right">
                             <button class="btn btn-sm btn-neutral"  data-toggle="modal" data-target="#createStudent"><i class="fas fa-plus mr-1"> </i> New</button>
-                            <a href="{{ route('dashboard') }}" class="btn btn-sm btn-neutral"><i class="fa fa-home" aria-hidden="true"></i> </a>
-                            <!-- Create Student Modal -->
+                            <a href="{{ route('dashboard') }}" class="btn btn-sm btn-neutral" aria-label="Go to Dashboard">
+                                <i class="fa fa-home" aria-hidden="true"></i>
+                                <span class="sr-only">Dashboard</span>
+                            </a><!-- Create Student Modal -->
                             @include('Manage.pages.Students.modals.CreateStudentModal')
                             <!--/ Create Student Modal -->
                         </div>

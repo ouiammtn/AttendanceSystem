@@ -18,17 +18,17 @@
             </ul>
             <ul class="navbar-nav align-items-center  ml-auto ml-md-0 ">
                 <li class="nav-item dropdown">
-                    <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
-                       aria-expanded="false" onkeydown="handleKeyDown(event)" onclick="handleClick(event)">
+                    <button class="nav-link pr-0" type="button" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false" onkeydown="handleKeyDown(event)" onclick="handleClick(event)">
                         <div class="media align-items-center">
                             <span class="avatar avatar-sm rounded-circle">
-                                <img alt="avatar" class="avatar agit vatar-sm rounded-circle" src="{{ asset('storage/me.jpg') }}">
+                                <img alt="profile" id="profile-img" src="{{ asset('storage/me.jpg') }}">
                             </span>
-                            <div class="media-body  ml-2  d-none d-lg-block">
-                                <span class="mb-0 text-sm  font-weight-bold">{{ Auth::user()->name }}</span>
+                            <div class="media-body ml-2 d-none d-lg-block">
+                                <span class="mb-0 text-sm font-weight-bold">{{ Auth::user()->name }}</span>
                             </div>
                         </div>
-                    </a>
+                    </button>
                     <div class="dropdown-menu  dropdown-menu-right ">
                         <div class="dropdown-header noti-title">
                             <h6 class="text-overflow m-0">Welcome!</h6>
@@ -72,5 +72,8 @@
                 image.src = 'https://picsum.photos/200';
             });
         }
+    });
+    document.getElementById('profile-img').addEventListener('error', function () {
+        this.src = 'https://picsum.photos/200'; // fallback image
     });
 </script>

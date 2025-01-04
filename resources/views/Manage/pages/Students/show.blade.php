@@ -31,9 +31,8 @@
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-body text-center bg-gray-100 radius shadow-2xl">
-                            <img src="{{ asset(Config::get('settings.site_logo')) }}" onerror="this.onerror=null;this.src='https://picsum.photos/200';"
-                                 class="rounded-circle img-center img-fluid shadow shadow-lg--hover"
-                                 style="width: 140px;" alt="">
+                            <img id="siteLogo" src="{{ asset(Config::get('settings.site_logo')) }}" alt="Site Logo">
+
                             <h1 class="mt-4">{{ $student->name }}</h1>
                             <blockquote class="blockquote mb-0">
                                 <p class="mb-0">{{ $student->email }}</p>
@@ -185,3 +184,8 @@
 
     </div>
 @endsection
+<script>
+    document.getElementById('siteLogo').addEventListener('error', function() {
+        this.src = 'https://picsum.photos/200';
+    });
+</script>

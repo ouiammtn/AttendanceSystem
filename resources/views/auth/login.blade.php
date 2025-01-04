@@ -75,7 +75,7 @@
             </div>
             <!-- Move the image outside the col-md-8 -->
             <div class="col-md-7">
-                <img src="{{ asset('storage/login.jpg') }}" alt="Your Image" class="img-fluid w-100 h-100">
+                <img src="{{ asset('storage/login.jpg') }}" alt="login" class="img-fluid w-100 h-100">
             </div>
         </div>
     </div>

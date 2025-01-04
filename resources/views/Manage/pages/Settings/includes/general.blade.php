@@ -2,7 +2,7 @@
     <div class="col-md-12">
         <h3>System Settings</h3>
         <hr>
-        <form action="{{ route('settings.update') }}" method="POST" role="form">
+        <form action="{{ route('settings.update') }}" method="POST">
             @csrf
             <div class="row">
                 <div class="col-md-6">

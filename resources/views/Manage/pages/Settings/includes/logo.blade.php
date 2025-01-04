@@ -2,23 +2,22 @@
     <div class="col-md-12">
         <h3>Logo and Favicon Setting</h3>
         <hr>
-        <form action="{{ route('settings.update') }}" enctype="multipart/form-data" method="POST" role="form">
+        <form action="{{ route('settings.update') }}" enctype="multipart/form-data" method="POST">
             @csrf
             <div class="row">
                 <div class="col-md-12">
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group files">
-                                <label class="control-label">Site Logo</label>
-                                <input class="form-control file" id="file" type="file" name="site_logo"
-                                 accept="image/*"></input>
+                                <label for="site-logo" class="control-label">Site Logo</label>
+                                <input class="form-control file" id="site-logo" type="file" name="site_logo" accept="image/*">
                             </div>
                         </div>
+
                         <div class="col-6">
                             <div class="form-group files">
-                                <label>Site Favicon </label>
-                                <input type="file" id="file" name="site_favicon" onchange="loadFile(event,'faviconImg')"
-                                    class="form-control file" accept="image/*">
+                                <label for="site-favicon">Site Favicon</label>
+                                <input type="file" id="site-favicon" name="site_favicon" onchange="loadFile(event,'faviconImg')" class="form-control file" accept="image/*">
                             </div>
                         </div>
                         <div class="col-md-6">

@@ -19,11 +19,14 @@ use Illuminate\Support\Facades\DB;
 
 class AttendanceController extends BaseController
 {
+    // Define the constant
+    const SUCCESS_MESSAGE = 'Good Job';
+
     /**
      * @return Application|Factory|View
      */
     public function index(){
-        $this->setPageTitle("Attendances" , 'All Attendances');
+        $this->setPageTitle("Attendances", 'All Attendances');
         $attendances = Attendance::with(['subject', 'teacher'])->WhereSubject(request()->get('subject_filter'))->WhereDateIs(request()->get('date_filter'))->withCount('students')->get();
         $subjects = Subject::all();
         return view('Manage.pages.Attendance.index', compact('attendances', 'subjects'));
@@ -35,12 +38,12 @@ class AttendanceController extends BaseController
      */
     public function store(StoreAttendanceRequest $request){
         $attendance = Attendance::create($request->validated() + [
-            'user_id' => Auth::id(),
+                'user_id' => Auth::id(),
             ]);
-        $subject = Subject::findorfail($request->get('subject_id'));
+        $subject = Subject::findOrFail($request->get('subject_id'));
         $subject->load('students');
         $this->setPageTitle($attendance->idm , 'Attendance');
-        alert('Good Job', 'You can start your attendance now!!', 'success');
+        alert(self::SUCCESS_MESSAGE, 'You can start your attendance now!!', 'success');
         return view('Manage.pages.Attendance.take-attendance', compact('attendance', 'subject'));
     }
 
@@ -67,18 +70,11 @@ class AttendanceController extends BaseController
         }
         else{
             foreach ($request->get('status') as $student_id => $status) {
-                $student = Student::findorfail($student_id);
-                if ($status == "on") {
-                    $value = 1;
-                } elseif($status == "off") {
-                    $value = 0;
-                }
-                else{
-                    $value = null;
-                }
+                $student = Student::findOrFail($student_id);
+                $value = $status == "on" ? 1 : ($status == "off" ? 0 : null);
                 $attendance->students()->attach($student->id, ['status' => $value]);
             }
-            alert('Good Job', 'Attendance taken successfully', 'success');
+            alert(self::SUCCESS_MESSAGE, 'Attendance taken successfully', 'success');
         }
         return  back();
     }
@@ -92,7 +88,7 @@ class AttendanceController extends BaseController
     {
         $attendance->students()->detach();
         $this->attachStudents($attendance, $request);
-        alert('Good Job', 'Attendance Data updated successfully', 'success');
+        alert(self::SUCCESS_MESSAGE, 'Attendance Data updated successfully', 'success');
         return  back();
     }
 
@@ -108,7 +104,7 @@ class AttendanceController extends BaseController
         catch (\Exception $exception){
             alert('Oops', 'Please try again', 'error');
         }
-        alert('Good Job', 'Attendance removed successfully', 'success');
+        alert(self::SUCCESS_MESSAGE, 'Attendance removed successfully', 'success');
         return  back();
     }
 }
