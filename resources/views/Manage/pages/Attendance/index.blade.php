@@ -19,7 +19,9 @@
                         </div>
                         <div class="col-lg-6 col-5 text-right">
                             <button class="btn btn-sm btn-neutral"  data-toggle="modal" data-target="#createAttendance"><i class="fas fa-plus mr-1"> </i> New</button>
-                            <a href="{{ route('dashboard') }}" class="btn btn-sm btn-neutral"><i class="fa fa-home" aria-hidden="true"></i> </a>
+                            <a href="{{ route('dashboard') }}" class="btn btn-sm btn-neutral" aria-label="Go to Dashboard">
+                                <i class="fa fa-home" aria-hidden="true"></i>
+                            </a>
                             <!-- Create Class Modal -->
                             @include('Manage.pages.Attendance.modals.CreateAttendanceModal')
                             <!--/ Create Class Modal -->
