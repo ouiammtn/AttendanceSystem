@@ -1,10 +1,19 @@
-<!-- Modal -->
-<div class="modal fade" id="createAttendance" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+<!DOCTYPE>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessible Modal Example</title>
+</head>
+<body>
+
+<!-- Modal Dialog Example -->
+<dialog id="createAttendance" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Start new Attendance</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" onclick="closeModal()" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -16,7 +25,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="form-control-label" for="subject">Select Subject*</label>
-                                <select id="subject" name="subject_id"  class="form-control radius">
+                                <select id="subject" name="subject_id" class="form-control radius">
                                     <option value="">Select Subject</option>
                                     @foreach($subjects as $subject)
                                         <option value="{{$subject->id}}">{{$subject->name}}</option>
@@ -32,7 +41,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="form-control-label" for="input-date">Choose Date*</label>
-                                <input class="form-control datepicker  @error('date') is-invalid @enderror " name="date" id="input-date" placeholder="Select date" type="text" value="{{ \Carbon\Carbon::today()->format('m/d/Y') }}">
+                                <input class="form-control datepicker @error('date') is-invalid @enderror " name="date" id="input-date" placeholder="Select date" type="text" value="{{ \Carbon\Carbon::today()->format('m/d/Y') }}">
                                 @error('date')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -43,10 +52,25 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary radius" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary radius" onclick="closeModal()">Close</button>
                     <button type="submit" class="btn btn-primary radius">Submit</button>
                 </div>
             </form>
         </div>
     </div>
-</div>
+</dialog>
+
+<script>
+    // Function to open the dialog
+    function openModal() {
+        document.getElementById('createAttendance').showModal();
+    }
+
+    // Function to close the dialog
+    function closeModal() {
+        document.getElementById('createAttendance').close();
+    }
+</script>
+
+</body>
+</html>

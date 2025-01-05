@@ -71,7 +71,13 @@ class AttendanceController extends BaseController
         else{
             foreach ($request->get('status') as $student_id => $status) {
                 $student = Student::findOrFail($student_id);
-                $value = $status == "on" ? 1 : ($status == "off" ? 0 : null);
+                if ($status == "on") {
+                    $value = 1;
+                } elseif ($status == "off") {
+                    $value = 0;
+                } else {
+                    $value = null;
+                }
                 $attendance->students()->attach($student->id, ['status' => $value]);
             }
             alert(self::SUCCESS_MESSAGE, 'Attendance taken successfully', 'success');

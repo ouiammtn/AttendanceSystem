@@ -16,6 +16,7 @@ class BroadcastServiceProvider extends ServiceProvider
     {
         Broadcast::routes();
 
-        require_once base_path('routes/channels.php');
+        // Instead of using require_once, use loadRoutesFrom to load the channels route
+        $this->loadRoutesFrom(base_path('routes/channels.php'));
     }
 }

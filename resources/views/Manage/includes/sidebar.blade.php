@@ -51,12 +51,6 @@
                     </li>
                     <!-- End Attendance -->
                     <!-- Add Attendance -->
-                    <!-- <li class="nav-item">
-                        <a class="nav-link {{ (request()->is('manage/setting*')) ? 'active' : '' }}" href="{{ route('settings.index') }}">
-                            <i class="ni ni-settings text-primary"></i>
-                            <span class="nav-link-text">Setting</span>
-                        </a>
-                    </li> -->
                     <!-- End Attendance -->
                     <!-- End Action -->
                     <li class="nav-item">

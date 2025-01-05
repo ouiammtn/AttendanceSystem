@@ -34,10 +34,9 @@ class Setting extends Model
     {
         $setting = new self();
         $entry = $setting->where('key', $key)->first();
-        if (!$entry) {
-            return;
-        }
-        return $entry->value;
+
+        // Return the value or null if not found
+        return $entry ? $entry->value : null;
     }
 
     /**

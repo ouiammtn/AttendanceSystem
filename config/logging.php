@@ -4,12 +4,15 @@ use Monolog\Handler\NullHandler;
 use Monolog\Handler\StreamHandler;
 use Monolog\Handler\SyslogUdpHandler;
 
+// Define constant for log file path
+define('LARAVEL_LOG_PATH', storage_path('logs/laravel.log'));
+
 return [
 
     /*
-    |--------------------------------------------------------------------------
+    |----------------------------------------------------------------------
     | Default Log Channel
-    |--------------------------------------------------------------------------
+    |----------------------------------------------------------------------
     |
     | This option defines the default log channel that gets used when writing
     | messages to the logs. The name specified in this option should match
@@ -20,17 +23,11 @@ return [
     'default' => env('LOG_CHANNEL', 'stack'),
 
     /*
-    |--------------------------------------------------------------------------
+    |----------------------------------------------------------------------
     | Log Channels
-    |--------------------------------------------------------------------------
+    |----------------------------------------------------------------------
     |
-    | Here you may configure the log channels for your application. Out of
-    | the box, Laravel uses the Monolog PHP logging library. This gives
-    | you a variety of powerful log handlers / formatters to utilize.
-    |
-    | Available Drivers: "single", "daily", "slack", "syslog",
-    |                    "errorlog", "monolog",
-    |                    "custom", "stack"
+    | Here you may configure the log channels for your application.
     |
     */
 
@@ -43,13 +40,13 @@ return [
 
         'single' => [
             'driver' => 'single',
-            'path' => storage_path('logs/laravel.log'),
+            'path' => LARAVEL_LOG_PATH,  // Use constant here
             'level' => env('LOG_LEVEL', 'debug'),
         ],
 
         'daily' => [
             'driver' => 'daily',
-            'path' => storage_path('logs/laravel.log'),
+            'path' => LARAVEL_LOG_PATH,  // Use constant here
             'level' => env('LOG_LEVEL', 'debug'),
             'days' => 14,
         ],
@@ -98,7 +95,7 @@ return [
         ],
 
         'emergency' => [
-            'path' => storage_path('logs/laravel.log'),
+            'path' => LARAVEL_LOG_PATH,  // Use constant here
         ],
     ],
 

@@ -55,12 +55,12 @@ class User extends Authenticatable
      */
     public function hasRoles(...$roles): bool
     {
-        foreach ($roles as $role){
-            if($this->role === $role)
+        foreach ($roles as $role) {
+            if ($this->role === $role) {
                 return true;
-            else
-                return false;
+            }
         }
+        return false;
     }
 
     /**

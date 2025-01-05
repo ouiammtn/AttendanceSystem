@@ -2,5 +2,5 @@ projectKey=AttendanceSystem
 serverUrl=http://localhost:9000
 serverVersion=24.12.0.100206
 dashboardUrl=http://localhost:9000/dashboard?id=AttendanceSystem
-ceTaskId=9eb15dc9-3c90-4f24-9828-ab9cf0d7eb68
-ceTaskUrl=http://localhost:9000/api/ce/task?id=9eb15dc9-3c90-4f24-9828-ab9cf0d7eb68
+ceTaskId=01baac8d-1037-4d36-9428-b79ddd4bed90
+ceTaskUrl=http://localhost:9000/api/ce/task?id=01baac8d-1037-4d36-9428-b79ddd4bed90

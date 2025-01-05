@@ -17,7 +17,7 @@ class SettingServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('settings', function ($app) {
+        $this->app->bind('settings', function () {
             return new Setting();
         });
         $loader = \Illuminate\Foundation\AliasLoader::getInstance();
@@ -34,9 +34,8 @@ class SettingServiceProvider extends ServiceProvider
         // only use the Settings package if the Settings table is present in the database
         if (!App::runningInConsole() && count(Schema::getColumnListing('settings'))) {
             $settings = Setting::all();
-            foreach ($settings as $key => $setting)
-            {
-                Config::set('settings.'.$setting->key, $setting->value);
+            foreach ($settings as $setting) {
+                Config::set('settings.' . $setting->key, $setting->value);
             }
         }
     }

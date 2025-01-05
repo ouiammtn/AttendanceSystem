@@ -24,7 +24,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-         $schedule->command('inspire')->hourly();
+        $schedule->command('inspire')->hourly();
     }
 
     /**
@@ -36,6 +36,8 @@ class Kernel extends ConsoleKernel
     {
         $this->load(__DIR__.'/Commands');
 
-        require_once base_path('routes/console.php');
+        // Instead of requiring the file manually, Laravel automatically loads console routes
+        // when the application starts, so no need to use require_once
+        $this->loadRoutesFrom(base_path('routes/console.php'));
     }
 }

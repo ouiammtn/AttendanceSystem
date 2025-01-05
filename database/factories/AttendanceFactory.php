@@ -43,7 +43,7 @@ class AttendanceFactory extends Factory
 
             // If no students exist for the subject, create them
             if ($subject->students()->count() === 0) {
-                $students = \App\Models\Student::factory()
+                \App\Models\Student::factory()
                     ->count($count ?? 3)
                     ->create()
                     ->each(function ($student) use ($subject) {
@@ -70,7 +70,7 @@ class AttendanceFactory extends Factory
      */
     public function forDate($date)
     {
-        return $this->state(function (array $attributes) use ($date) {
+        return $this->state(function () use ($date) {
             return [
                 'date' => Carbon::parse($date)->format('Y-m-d')
             ];
@@ -82,7 +82,7 @@ class AttendanceFactory extends Factory
      */
     public function forSubject(Subject $subject)
     {
-        return $this->state(function (array $attributes) use ($subject) {
+        return $this->state(function () use ($subject) {
             return [
                 'subject_id' => $subject->id
             ];
