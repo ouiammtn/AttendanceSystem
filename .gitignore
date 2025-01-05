@@ -1,14 +1,32 @@
+# Laravel
 /node_modules
 /public/hot
 /public/storage
 /storage/*.key
 /vendor
 .env
+.env.*
 .env.backup
 .phpunit.result.cache
 docker-compose.override.yml
 npm-debug.log
 yarn-error.log
+
+# IDE
 /.idea
 /.vscode
-./sonar-project.properties
+.DS_Store
+
+# SonarQube
+sonar-project.properties
+.scannerwork/
+.sonarqube/
+tests/reports/
+coverage.xml
+phpunit.xml
+.phpunit.cache/
+
+# Misc
+Thumbs.db
+*.log
+*.cache
